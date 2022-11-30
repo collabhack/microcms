@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cloudly-storage": "^0.4.8",
     "isoly": "^2.0.14"
   }
 }
