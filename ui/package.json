@@ -29,7 +29,8 @@
     "clean": "rimraf dist node_modules coverage"
   },
   "dependencies": {
-    "@stencil/core": "^2.19.3"
+    "@stencil/core": "^2.19.3",
+    "@collabhack/model-microcms": "../model"
   },
   "devDependencies": {
     "@types/jest": "^29.2.3",
