@@ -1,6 +1,6 @@
-dist
-node_modules
-transpiled
-worker
-variables.toml
-.env
+*/dist
+*/node_modules
+*/transpiled
+*/worker
+*/variables.toml
+*/.env

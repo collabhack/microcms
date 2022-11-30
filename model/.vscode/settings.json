@@ -1,31 +1,32 @@
 {
 	"files.exclude": {
-		"**/.*": true,
-		"**/*.json": true,
-		"**/dist": true,
-		"**/README.md": true,
-		"**/LICENSE": true,
-		"**/CODEOWNERS": true,
-		"**/tsconfig.*": true,
-		"**/node_modules": true,
-		"**/*.code-workspace": true,
-		"**/*.config.js": true,
-		"**/*.toml": true
+		".*": true,
+		"*.json": true,
+		"CODEOWNERS": true,
+		"dist": true,
+		"README.md": true,
+		"LICENSE": true,
+		"tsconfig.*": true,
+		"node_modules": true,
+		"*.code-workspace": true
 	},
+	"files.insertFinalNewline": true,
 	"editor.tabSize": 2,
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true,
 		"eslint.autoFixOnSave": true,
 	},
 	"eslint.format.enable": true,
 	"eslint.lintTask.enable": true,
-	"files.insertFinalNewline": true,
 	"javascript.format.enable": false,
 	"typescript.format.enable": false,
 	"cSpell.words": [
 		"authly",
+		"cloudly",
 		"cryptly",
 		"flagly",
 		"gracely",
@@ -33,7 +34,12 @@
 		"langly",
 		"paramly",
 		"persistly",
+		"selectivly",
 		"servly",
+		"servly-azure",
+		"smoothly",
+		"tidily",
+		"transactly",
 		"uply"
 	]
 }

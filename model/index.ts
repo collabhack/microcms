@@ -1,1 +1,1 @@
-export { Item } from "./Item"
+export const a = 42
