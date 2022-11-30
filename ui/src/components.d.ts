@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Notice } from "smoothly";
 export namespace Components {
     interface MicrocmsCreate {
+        "feed"?: string;
     }
     interface MicrocmsList {
         "feed"?: string;
@@ -48,6 +49,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface MicrocmsCreate {
+        "feed"?: string;
         "onNotice"?: (event: MicrocmsCreateCustomEvent<Notice>) => void;
     }
     interface MicrocmsList {

@@ -8,7 +8,6 @@ export interface Message extends Creatable {
 }
 export interface Creatable {
 	title: string
-	image?: string
 	content: string
 }
 export namespace Message {
@@ -23,7 +22,7 @@ export namespace Message {
 	export namespace Creatable {
 		export function is(value: any | Creatable){
 			return value && typeof value == "object" && typeof value.title == "string" &&
-			(value.image == undefined || typeof value.image == "string") && typeof value.content == "string"
+			 typeof value.content == "string"
 		}
 
 	}
