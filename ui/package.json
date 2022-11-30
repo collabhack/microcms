@@ -29,6 +29,9 @@
     "clean": "rimraf dist node_modules coverage"
   },
   "dependencies": {
+    "cloudly-http": "^0.0.53",
+    "isoly": "^2.0.14",
+    "gracely": "^2.0.3",
     "@stencil/core": "^2.19.3",
     "@collabhack/model-microcms": "../model"
   },
