@@ -1,4 +1,5 @@
-import { Component, ComponentWillLoad, h, Prop } from "@stencil/core"
+import { Component, ComponentWillLoad, h, Prop, State } from "@stencil/core"
+import * as isoly from "isoly"
 import * as model from "@collabhack/model-microcms"
 import * as http from "cloudly-http"
 
@@ -8,14 +9,35 @@ import * as http from "cloudly-http"
 	shadow: true,
 })
 export class MicroCmsList implements ComponentWillLoad {
-	@Prop() feed: string
-	readonly baseUrl= "http://127.0.0.1:8788"
+	@Prop() feed?: string
+	@State() private messages?: readonly model.Message[]
+	readonly baseUrl = "http://127.0.0.1:8788"
 
-	componentWillLoad(): void | Promise<void> {
-		http.fetch(`${this.baseUrl}/${this.feed}/message`)
+	async componentWillLoad(): Promise<void> {
+		try {
+			const response = await http.fetch(`${this.baseUrl}/${this.feed}/message`)
+			this.messages = await response?.body
+		} catch (e) {
+			console.error("Failed to fetch data", e)
+		}
 	}
 
 	render() {
-		return <div>Hello, World! I'm {model.Message.is("")}</div>
+		return (
+			this.messages?.map(message => (
+				<article>
+					<header>
+						<h1>{message.title}</h1>
+						<p class="created">{isoly.DateTime.localize(isoly.DateTime.truncate(message.created, "minutes"))}</p>
+					</header>
+					<aside>
+						<img src="http://placekitten.com/g/200/300" />
+					</aside>
+					<main>
+						<p>{message.content}</p>
+					</main>
+				</article>
+			)) ?? <div class="error">Failed to fetch the data</div>
+		)
 	}
 }

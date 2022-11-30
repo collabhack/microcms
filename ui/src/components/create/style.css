@@ -1,12 +1,11 @@
 :host {
-  display: block;
-}
-
-:host>article {
-  border: dashed 1px blue;
-  padding: 10px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
+}
+
+:host>form>input[type=text] {
+  width: 350px;
 }
 
 :host>article>header {

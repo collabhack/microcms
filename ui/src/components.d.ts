@@ -6,56 +6,49 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface MicrocmsCreate {
+        "feed": string;
+    }
+    interface MicrocmsList {
+        "feed"?: string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLMicrocmsCreateElement extends Components.MicrocmsCreate, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLMicrocmsCreateElement: {
+        prototype: HTMLMicrocmsCreateElement;
+        new (): HTMLMicrocmsCreateElement;
+    };
+    interface HTMLMicrocmsListElement extends Components.MicrocmsList, HTMLStencilElement {
+    }
+    var HTMLMicrocmsListElement: {
+        prototype: HTMLMicrocmsListElement;
+        new (): HTMLMicrocmsListElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "microcms-create": HTMLMicrocmsCreateElement;
+        "microcms-list": HTMLMicrocmsListElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface MicrocmsCreate {
+        "feed"?: string;
+    }
+    interface MicrocmsList {
+        "feed"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "microcms-create": MicrocmsCreate;
+        "microcms-list": MicrocmsList;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "microcms-create": LocalJSX.MicrocmsCreate & JSXBase.HTMLAttributes<HTMLMicrocmsCreateElement>;
+            "microcms-list": LocalJSX.MicrocmsList & JSXBase.HTMLAttributes<HTMLMicrocmsListElement>;
         }
     }
 }
