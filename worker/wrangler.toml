@@ -4,24 +4,24 @@ workers_dev = true
 routes = []
 vars = { }
 main = "./dist/_worker.js"
-
+kv_namespaces = [{binding = "messageStore", id = "miniflareId", preview_id = "miniflareIdPreview"}]
 
 [build]
 command = "npm install && npm run build"
-upload.format = "modules"
+
+[build.upload]
+format = "modules"
+main = "./_worker.js"
 
 [env.production]
 workers_dev = false
 vars = {  }
-durable_objects.bindings = []
 kv_namespaces = []
-r2_buckets = []
 
 [env.local]
 workers_dev = true
 vars = { adminSecret = "adminSecret" }
-durable_objects.bindings = []
-kv_namespaces = []
+kv_namespaces = [{binding = "messageStore", id = "miniflareId", preview_id = "miniflareIdPreview"}]
 r2_buckets = []
 
 [miniflare]

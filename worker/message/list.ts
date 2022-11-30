@@ -5,26 +5,15 @@ import { Context } from "../Context"
 import { router } from "../router"
 
 export async function list(request: http.Request, context: Context): Promise<http.Response.Like | any> {
-	let result: model.Message[] | gracely.Error
-	result = messages
+	let result: (model.Message | undefined)[] | gracely.Error
+	const kv = context.kv
+	const feed = request.parameter.feed
+	if (gracely.Error.is(kv))
+		result = kv
+	else {
+		result = (await kv.list({ prefix: `m|${feed}`, limit: 2, values: true })).map(item => item.value)
+	}
+
 	return result
 }
-router.add("GET", "/:site/message", list)
-
-const messages: model.Message[] = [
-	{
-		title: "first post",
-		content: "best content",
-		created: "2022-01-02T12:00:00.001Z",
-	},
-	{
-		title: "second post",
-		content: "best content",
-		created: "2022-01-02T12:00:00.001Z",
-	},
-	{
-		title: "third post",
-		content: "best content",
-		created: "2022-01-02T12:00:00.001Z",
-	},
-]
+router.add("GET", "/:feed/message", list)
